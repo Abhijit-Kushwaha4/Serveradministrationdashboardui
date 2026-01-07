@@ -1,0 +1,14 @@
+/* Monospace font for data-heavy dashboard */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.font-mono,
+[style*="font-family: monospace"],
+[style*="fontFamily: 'monospace'"] {
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+}
