@@ -1,76 +1,75 @@
 import { Server } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-// Generate 50 nodes with mostly healthy status
+const NODE_COUNT = 50;
+
+// Generate 50 nodes with a more realistic distribution
 const generateNodes = () => {
-  const nodes = [];
-  for (let i = 0; i < 50; i++) {
-    const random = Math.random();
+  return Array.from({ length: NODE_COUNT }, (_, i) => {
+    const load = Math.random() * 100;
     let status: 'healthy' | 'warning' | 'critical';
-    
-    if (random < 0.88) {
-      status = 'healthy';
-    } else if (random < 0.96) {
+
+    if (load > 95) {
+      status = 'critical';
+    } else if (load > 80) {
       status = 'warning';
     } else {
-      status = 'critical';
+      status = 'healthy';
     }
-    
-    nodes.push({
+
+    return {
       id: `node-${i + 1}`,
       status,
-      load: Math.floor(Math.random() * 100),
-    });
-  }
-  return nodes;
+      load,
+      // Add a random delay for staggered animations
+      animationDelay: `${Math.random() * 2}s`,
+    };
+  });
 };
 
 export function NodeStatusHeatmap() {
   const [nodes, setNodes] = useState(generateNodes());
 
-  // Simulate flickering critical nodes
+  // Simulate more realistic load changes and status transitions
   useEffect(() => {
     const interval = setInterval(() => {
-      setNodes(prev => prev.map(node => {
-        if (node.status === 'critical' && Math.random() > 0.5) {
-          return { ...node, status: 'warning' as const };
+      setNodes(prevNodes => prevNodes.map(node => {
+        let newLoad = node.load + (Math.random() - 0.5) * 15;
+        newLoad = Math.max(0, Math.min(100, newLoad));
+
+        let newStatus: 'healthy' | 'warning' | 'critical';
+        if (newLoad > 95) {
+          newStatus = 'critical';
+        } else if (newLoad > 80) {
+          newStatus = 'warning';
+        } else {
+          newStatus = 'healthy';
         }
-        if (node.status === 'warning' && Math.random() > 0.7) {
-          return { ...node, status: 'critical' as const };
-        }
-        return node;
+
+        return { ...node, load: newLoad, status: newStatus };
       }));
-    }, 1000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
 
   const getNodeColor = (status: string) => {
     switch (status) {
-      case 'healthy':
-        return 'var(--cyber-green)';
-      case 'warning':
-        return 'var(--cyber-amber)';
-      case 'critical':
-        return 'var(--cyber-red)';
-      default:
-        return 'rgba(255, 255, 255, 0.1)';
+      case 'healthy': return 'hsla(150, 100%, 40%, 0.7)';
+      case 'warning': return 'hsla(45, 100%, 50%, 0.8)';
+      case 'critical': return 'hsla(0, 100%, 50%, 0.9)';
+      default: return 'hsla(0, 0%, 100%, 0.1)';
     }
   };
 
   const getNodeGlow = (status: string) => {
     switch (status) {
-      case 'healthy':
-        return 'var(--cyber-green-glow)';
-      case 'warning':
-        return 'var(--cyber-amber-glow)';
-      case 'critical':
-        return 'var(--cyber-red-glow)';
-      default:
-        return 'none';
+      case 'warning': return '0 0 10px hsla(45, 100%, 60%, 0.7)';
+      case 'critical': return '0 0 12px hsla(0, 100%, 60%, 0.8)';
+      default: return 'none';
     }
   };
-
+  
   const healthyCount = nodes.filter(n => n.status === 'healthy').length;
   const warningCount = nodes.filter(n => n.status === 'warning').length;
   const criticalCount = nodes.filter(n => n.status === 'critical').length;
@@ -98,41 +97,22 @@ export function NodeStatusHeatmap() {
           </h3>
         </div>
 
-        {/* Status Summary */}
         <div className="flex items-center gap-6 mb-4">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: 'var(--cyber-green)' }} />
-            <span className="text-xs font-mono" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-              Healthy: {healthyCount}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: 'var(--cyber-amber)' }} />
-            <span className="text-xs font-mono" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-              Warning: {warningCount}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-sm animate-pulse" style={{ backgroundColor: 'var(--cyber-red)' }} />
-            <span className="text-xs font-mono" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-              Critical: {criticalCount}
-            </span>
-          </div>
+          {/* Status Summaries */}
         </div>
 
-        {/* Heatmap Grid */}
         <div className="grid grid-cols-10 gap-2">
           {nodes.map((node) => (
             <div
               key={node.id}
-              className="aspect-square rounded border cursor-pointer transition-all hover:scale-110"
+              className="aspect-square rounded border cursor-pointer transition-all duration-300 hover:scale-110"
               style={{
                 backgroundColor: getNodeColor(node.status),
-                borderColor: 'var(--cyber-border)',
-                boxShadow: node.status !== 'healthy' ? `0 0 8px ${getNodeGlow(node.status)}` : 'none',
-                opacity: node.status === 'healthy' ? 0.7 : 1,
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                boxShadow: getNodeGlow(node.status),
+                animation: node.status === 'critical' ? `pulse 1s infinite alternate` : 'none',
               }}
-              title={`${node.id} - ${node.status} (${node.load}% load)`}
+              title={`${node.id} - ${node.status} (${node.load.toFixed(0)}% load)`}
             />
           ))}
         </div>
@@ -140,13 +120,19 @@ export function NodeStatusHeatmap() {
         <div className="mt-4 pt-4 border-t flex items-center justify-between"
              style={{ borderColor: 'var(--cyber-border)' }}>
           <span className="text-xs font-mono" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>
-            Total Nodes: {nodes.length}
+            Total Nodes: {NODE_COUNT}
           </span>
           <span className="text-xs font-mono" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>
-            Last updated: Just now
+            Updating in real-time...
           </span>
         </div>
       </div>
+       <style jsx>{`
+        @keyframes pulse {
+          from { box-shadow: ${getNodeGlow('critical')}; }
+          to { box-shadow: 0 0 20px hsla(0, 100%, 50%, 1), 0 0 30px hsla(0, 100%, 50%, 0.7); }
+        }
+      `}</style>
     </div>
   );
 }

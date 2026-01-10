@@ -1,19 +1,44 @@
+import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import { Cpu } from 'lucide-react';
 
-const data = [
-  { time: '00:00', cpu: 45, memory: 62 },
-  { time: '04:00', cpu: 52, memory: 65 },
-  { time: '08:00', cpu: 68, memory: 71 },
-  { time: '12:00', cpu: 78, memory: 75 },
-  { time: '16:00', cpu: 72, memory: 73 },
-  { time: '20:00', cpu: 58, memory: 68 },
-  { time: '24:00', cpu: 48, memory: 64 },
-];
+const generateInitialData = () => {
+  const data = [];
+  for (let i = 0; i < 15; i++) {
+    data.push({
+      time: new Date(Date.now() - (14 - i) * 5000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      cpu: Math.random() * 20 + 40,
+      memory: Math.random() * 20 + 50,
+    });
+  }
+  return data;
+};
 
 export function CPUMemoryChart() {
+  const [data, setData] = useState(generateInitialData());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setData(prevData => {
+        const newData = prevData.slice(1);
+        const lastDataPoint = prevData[prevData.length - 1];
+        newData.push({
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+          cpu: Math.max(20, Math.min(95, lastDataPoint.cpu + (Math.random() - 0.5) * 10)),
+          memory: Math.max(30, Math.min(90, lastDataPoint.memory + (Math.random() - 0.5) * 5)),
+        });
+        return newData;
+      });
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentCpu = data[data.length - 1]?.cpu.toFixed(1) || 0;
+  const currentMemory = data[data.length - 1]?.memory.toFixed(1) || 0;
+
   return (
-    <div className="relative overflow-hidden rounded-xl border p-6"
+    <div className="relative overflow-hidden rounded-xl border p-6 col-span-2"
          style={{
            backgroundColor: 'var(--cyber-dark-surface)',
            borderColor: 'var(--cyber-border)',
@@ -32,7 +57,7 @@ export function CPUMemoryChart() {
           <div className="flex items-center gap-2">
             <Cpu className="w-5 h-5" style={{ color: 'var(--cyber-green)' }} />
             <h3 className="text-sm uppercase tracking-wider" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-              CPU & Memory Usage Over Time
+              CPU & Memory Usage (Real-time)
             </h3>
           </div>
           
@@ -53,11 +78,11 @@ export function CPUMemoryChart() {
             <AreaChart data={data}>
               <defs>
                 <linearGradient id="colorCpu" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="var(--cyber-green)" stopOpacity={0.3}/>
+                  <stop offset="5%" stopColor="var(--cyber-green)" stopOpacity={0.4}/>
                   <stop offset="95%" stopColor="var(--cyber-green)" stopOpacity={0}/>
                 </linearGradient>
                 <linearGradient id="colorMemory" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="var(--cyber-amber)" stopOpacity={0.3}/>
+                  <stop offset="5%" stopColor="var(--cyber-amber)" stopOpacity={0.4}/>
                   <stop offset="95%" stopColor="var(--cyber-amber)" stopOpacity={0}/>
                 </linearGradient>
               </defs>
@@ -70,6 +95,8 @@ export function CPUMemoryChart() {
                 dataKey="time" 
                 stroke="rgba(255, 255, 255, 0.3)"
                 style={{ fontSize: '0.75rem', fontFamily: 'monospace' }}
+                interval="preserveStartEnd"
+                ticks={[data[0]?.time, data[Math.floor(data.length / 2)]?.time, data[data.length - 1]?.time]}
               />
               <YAxis 
                 stroke="rgba(255, 255, 255, 0.3)"
@@ -87,6 +114,7 @@ export function CPUMemoryChart() {
                 labelStyle={{ color: 'rgba(255, 255, 255, 0.6)' }}
               />
               <Area
+                isAnimationActive={false}
                 type="monotone"
                 dataKey="cpu"
                 stroke="var(--cyber-green)"
@@ -94,6 +122,7 @@ export function CPUMemoryChart() {
                 fill="url(#colorCpu)"
               />
               <Area
+                isAnimationActive={false}
                 type="monotone"
                 dataKey="memory"
                 stroke="var(--cyber-amber)"
@@ -111,7 +140,7 @@ export function CPUMemoryChart() {
               Current CPU
             </div>
             <div className="text-xl font-mono" style={{ color: 'var(--cyber-green)' }}>
-              78%
+              {currentCpu}%
             </div>
           </div>
           <div>
@@ -119,7 +148,7 @@ export function CPUMemoryChart() {
               Current Memory
             </div>
             <div className="text-xl font-mono" style={{ color: 'var(--cyber-amber)' }}>
-              75%
+              {currentMemory}%
             </div>
           </div>
         </div>

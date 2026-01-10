@@ -1,0 +1,14 @@
+
+:root {
+  --cyber-green: #00ff00;
+  --cyber-teal: #00ffff;
+  --cyber-border: rgba(0, 255, 0, 0.5);
+  --cyber-dark-surface: rgba(0, 50, 0, 0.1);
+  --cyber-glass: rgba(0, 255, 0, 0.05);
+  --cyber-obsidian: #0a0a0a;
+}
+
+body {
+  background-color: var(--cyber-obsidian);
+  color: var(--cyber-green);
+}

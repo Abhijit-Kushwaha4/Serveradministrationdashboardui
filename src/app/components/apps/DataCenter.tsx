@@ -5,18 +5,23 @@ import { LiveEventLog } from '../LiveEventLog';
 
 export function DataCenter() {
   return (
-    <div className="h-full overflow-auto p-6">
-      <div className="space-y-6">
-        <div className="grid grid-cols-3 gap-6">
+    <div className="h-full overflow-auto p-6 bg-cyber-obsidian text-white">
+      <div className="grid grid-cols-3 grid-rows-3 gap-6 h-full">
+        {/* Row 1 */}
+        <div className="col-span-1 row-span-1">
           <SystemHealthCard />
         </div>
+        <div className="col-span-2 row-span-1">
+          <NodeStatusHeatmap />
+        </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        {/* Row 2 & 3 */}
+        <div className="col-span-3 row-span-2">
           <CPUMemoryChart />
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
-          <NodeStatusHeatmap />
+        {/* Row 4 */}
+        <div className="col-span-3 row-span-1">
           <LiveEventLog />
         </div>
       </div>

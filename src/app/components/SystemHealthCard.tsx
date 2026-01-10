@@ -1,20 +1,44 @@
+import { useState, useEffect } from 'react';
 import { Activity } from 'lucide-react';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 
-const sparklineData = [
-  { value: 99.95 },
-  { value: 99.97 },
-  { value: 99.99 },
-  { value: 99.98 },
-  { value: 99.99 },
-  { value: 100 },
-  { value: 99.99 },
-  { value: 99.99 },
-];
+const generateSparklineData = () => {
+  const data = [];
+  let lastValue = 99.98 + Math.random() * 0.04 - 0.02;
+  for (let i = 0; i < 20; i++) {
+    lastValue += Math.random() * 0.02 - 0.01;
+    lastValue = Math.min(100, Math.max(99.9, lastValue));
+    data.push({ value: parseFloat(lastValue.toFixed(2)) });
+  }
+  return data;
+};
 
 export function SystemHealthCard() {
+  const [uptime, setUptime] = useState(99.99);
+  const [sparklineData, setSparklineData] = useState(generateSparklineData());
+  const [lastIncident, setLastIncident] = useState(127);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setUptime(prev => {
+        let newUptime = prev + (Math.random() - 0.5) * 0.01;
+        return Math.min(100, Math.max(99.9, newUptime));
+      });
+      setSparklineData(generateSparklineData());
+    }, 2000);
+
+    const incidentInterval = setInterval(() => {
+      setLastIncident(prev => prev + 1);
+    }, 86400000); // Increment every day
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(incidentInterval);
+    };
+  }, []);
+
   return (
-    <div className="relative overflow-hidden rounded-xl border p-6"
+    <div className="relative overflow-hidden rounded-xl border p-6 col-span-1"
          style={{
            backgroundColor: 'var(--cyber-dark-surface)',
            borderColor: 'var(--cyber-border)',
@@ -38,12 +62,12 @@ export function SystemHealthCard() {
               </h3>
             </div>
             <div className="flex items-baseline gap-3">
-              <span className="text-5xl font-mono tracking-tight" 
-                    style={{ 
-                      color: 'var(--cyber-green)',
-                      textShadow: '0 0 20px var(--cyber-green-glow)',
+              <span className="text-5xl font-mono tracking-tight"
+                    style={{
+                      color: uptime > 99.95 ? 'var(--cyber-green)' : 'var(--cyber-amber)',
+                      textShadow: `0 0 20px ${uptime > 99.95 ? 'var(--cyber-green-glow)' : 'var(--cyber-amber-glow)'}`,
                     }}>
-                99.99%
+                {uptime.toFixed(2)}%
               </span>
               <span className="text-sm font-mono" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
                 Uptime
@@ -52,17 +76,17 @@ export function SystemHealthCard() {
           </div>
         </div>
 
-        {/* Sparkline */}
         <div className="h-16 -mx-2">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={sparklineData}>
-              <Line 
-                type="monotone" 
-                dataKey="value" 
-                stroke="var(--cyber-green)"
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke={uptime > 99.95 ? 'var(--cyber-green)' : 'var(--cyber-amber)'}
                 strokeWidth={2}
                 dot={false}
-                isAnimationActive={false}
+                isAnimationActive={true}
+                animationDuration={500}
               />
             </LineChart>
           </ResponsiveContainer>
@@ -71,10 +95,10 @@ export function SystemHealthCard() {
         <div className="mt-4 pt-4 border-t flex items-center justify-between"
              style={{ borderColor: 'var(--cyber-border)' }}>
           <span className="text-xs font-mono" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>
-            Last incident: 127 days ago
+            Last incident: {lastIncident} days ago
           </span>
-          <div className="w-2 h-2 rounded-full animate-pulse" 
-               style={{ 
+          <div className="w-2 h-2 rounded-full animate-pulse"
+               style={{
                  backgroundColor: 'var(--cyber-green)',
                  boxShadow: '0 0 8px var(--cyber-green-glow)',
                }} />

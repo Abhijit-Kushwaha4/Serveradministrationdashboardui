@@ -1,77 +1,161 @@
-import { useState } from 'react';
-import { Globe, ArrowLeft, ArrowRight, RotateCw } from 'lucide-react';
 
-export function BrowserApp() {
-  const [url, setUrl] = useState('https://example.com');
-  const [displayUrl, setDisplayUrl] = useState('https://example.com');
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { RefreshCw, ArrowLeft, ArrowRight, Shield, X, Plus, Star, Download, Code, MoreVertical, Bug } from 'lucide-react';
+import { Skeleton } from '../ui/skeleton';
 
-  const handleGo = () => {
-    setDisplayUrl(url);
-  };
+const BrowserFrame = ({ url, noScript, userAgent, onPageLoad, onFetchError, isDebugMode, localTestContent }) => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [rawHtml, setRawHtml] = useState(''); // For Debug Mode
+    const iframeRef = useRef(null);
 
-  return (
-    <div className="h-full flex flex-col">
-      {/* Address Bar */}
-      <div className="p-4 border-b flex items-center gap-2"
-           style={{ borderColor: 'var(--cyber-border)', backgroundColor: 'var(--cyber-charcoal)' }}>
-        <button className="p-2 rounded border"
-                style={{
-                  backgroundColor: 'var(--cyber-dark-surface)',
-                  borderColor: 'var(--cyber-border)',
-                }}>
-          <ArrowLeft className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.5)' }} />
-        </button>
-        <button className="p-2 rounded border"
-                style={{
-                  backgroundColor: 'var(--cyber-dark-surface)',
-                  borderColor: 'var(--cyber-border)',
-                }}>
-          <ArrowRight className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.5)' }} />
-        </button>
-        <button className="p-2 rounded border"
-                style={{
-                  backgroundColor: 'var(--cyber-dark-surface)',
-                  borderColor: 'var(--cyber-border)',
-                }}>
-          <RotateCw className="w-4 h-4" style={{ color: 'rgba(255, 255, 255, 0.5)' }} />
-        </button>
-        
-        <div className="flex-1 flex items-center gap-2">
-          <Globe className="w-4 h-4 ml-2" style={{ color: 'rgba(255, 255, 255, 0.5)' }} />
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleGo()}
-            className="flex-1 px-3 py-2 rounded-lg border outline-none font-mono text-sm"
-            style={{
-              backgroundColor: 'var(--cyber-dark-surface)',
-              borderColor: 'var(--cyber-border)',
-              color: 'rgba(255, 255, 255, 0.9)',
-            }}
-          />
-          <button
-            onClick={handleGo}
-            className="px-4 py-2 rounded-lg border font-mono text-sm"
-            style={{
-              backgroundColor: 'var(--cyber-green)',
-              borderColor: 'var(--cyber-green)',
-              color: 'var(--cyber-obsidian)',
-            }}>
-            Go
-          </button>
+    useEffect(() => {
+        if (!url && !localTestContent) return;
+        setIsLoading(true);
+        setError(null);
+        setRawHtml('');
+
+        // 2. The "Hello World" Sanity Check
+        if (localTestContent) {
+            const doc = iframeRef.current.contentWindow.document;
+            doc.open();
+            doc.write(localTestContent);
+            doc.close();
+            setIsLoading(false);
+            return;
+        }
+
+        const fetchPage = async () => {
+            try {
+                const response = await fetch(`/api/browse?url=${encodeURIComponent(url)}&noScript=${noScript}&userAgent=${userAgent}`);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    // 4. Error Toaster (will be caught and set in `error` state)
+                    throw new Error(`Proxy Error (${response.status}): ${data.message || 'No Data Received.'}`);
+                }
+
+                onPageLoad(data);
+                setRawHtml(data.html); // 1. Save raw HTML for debug view
+
+                const doc = iframeRef.current.contentWindow.document;
+                doc.open();
+                doc.write(data.html);
+                doc.close();
+
+            } catch (err) {
+                console.error('[DIAGNOSTIC_ERROR]', err);
+                setError(err);
+                setRawHtml(`{ \"error\": \"${err.message}\" }`); // Show error in debug view
+                onFetchError(err);
+            } 
+        };
+
+        fetchPage();
+    }, [url, noScript, userAgent, onPageLoad, onFetchError, localTestContent]);
+
+    // 1. "Raw HTML" Switch View
+    if (isDebugMode) {
+        return (
+            <div className='w-full h-full p-2 bg-black text-green-400 font-mono text-xs'>
+                <h2 className='text-lg text-yellow-400 mb-2'>DEBUG MODE: Raw Proxy Output</h2>
+                <textarea 
+                    readOnly 
+                    className='w-full h-full bg-gray-900 border border-green-700 p-2' 
+                    value={rawHtml}
+                />
+            </div>
+        );
+    }
+
+    return (
+        <div className="w-full h-full relative bg-black overflow-y-auto">
+            {isLoading && (
+                <div className="absolute inset-0 z-20 flex items-center justify-center">
+                    <p className="text-white">Loading...</p>
+                </div>
+            )}
+
+            {error && (
+                <div className="absolute inset-0 z-10 flex items-center justify-center p-4 text-center">
+                     <div className="bg-red-900/80 border border-red-500 text-white p-8 rounded-lg backdrop-blur-sm">
+                        <h2 className="text-2xl font-bold mb-2">FETCH FAILED</h2>
+                        <p className="text-red-300">{error.message}</p>
+                    </div>
+                </div>
+            )}
+
+            <iframe
+                ref={iframeRef}
+                title={url || 'local-test'}
+                className={`w-full h-full border-none transition-opacity duration-300 ${(isLoading || error) && !localTestContent ? 'opacity-0' : 'opacity-100'}`}
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                onLoad={() => setIsLoading(false)}
+            ></iframe>
         </div>
-      </div>
+    );
+};
 
-      {/* Content */}
-      <div className="flex-1 flex items-center justify-center"
-           style={{ backgroundColor: '#ffffff' }}>
-        <div className="text-center">
-          <Globe className="w-16 h-16 mx-auto mb-4" style={{ color: '#333' }} />
-          <div className="text-xl mb-2" style={{ color: '#333' }}>{displayUrl}</div>
-          <div className="text-sm" style={{ color: '#666' }}>Simulated browser view</div>
+export const BrowserApp = () => {
+    const [tabs, setTabs] = useState([{ id: 1, url: 'https://google.com', title: 'Google', history: ['https://google.com'], historyIndex: 0 }]);
+    const [activeTabId, setActiveTabId] = useState(1);
+    const [inputUrl, setInputUrl] = useState('https://google.com');
+    const [settings, setSettings] = useState({ noScript: false, userAgent: 'desktop' });
+    const [isDebugMode, setIsDebugMode] = useState(false); // Diagnostic State
+    const [localTestContent, setLocalTestContent] = useState(''); // Diagnostic State
+
+    const activeTab = tabs.find(t => t.id === activeTabId);
+
+    const handlePageLoaded = useCallback(() => {
+        setLocalTestContent(''); // Clear local test on successful load
+    }, []);
+
+    const handleFetchError = useCallback(() => {
+        setLocalTestContent('');
+    }, []);
+    
+    const navigate = (url, tabId = activeTabId) => {
+      setTabs(tabs.map(t => t.id === tabId ? { ...t, url, title: 'Loading...' } : t));
+      setInputUrl(url);
+      setLocalTestContent(''); // Always clear local test on navigation
+    };
+  
+    const handleGo = (e) => e.preventDefault();
+
+    return (
+        <div className="w-full h-full bg-cyber-dark-surface flex flex-col text-white font-sans">
+            <div className="bg-cyber-surface p-2 flex items-center gap-2 border-b border-cyber-border z-20">
+                <form onSubmit={handleGo} className="flex-1">
+                    <input type="text" value={inputUrl} onChange={e => setInputUrl(e.target.value)} className="w-full bg-cyber-glass px-4 py-2 rounded-md border border-cyber-border" />
+                </form>
+                {/* --- DIAGNOSTIC CONTROLS --- */}
+                <button onClick={() => setIsDebugMode(!isDebugMode)} className={`p-2 rounded-md ${isDebugMode ? 'bg-yellow-500 text-black' : 'hover:bg-cyber-glass'}`} title="Debug Mode">
+                    <Bug size={16}/>
+                </button>
+                <button onClick={() => setLocalTestContent('<h1>IT WORKS</h1><p>The iframe element is capable of rendering.</p>')} className="p-2 rounded-md hover:bg-cyber-glass" title="Test Local Render">
+                    Test Render
+                </button>
+            </div>
+
+            <div className="flex-1 relative flex min-h-0">
+                <div className="flex-1 relative">
+                    {tabs.map(tab => (
+                        <div key={tab.id} className={`w-full h-full absolute top-0 left-0 ${activeTabId === tab.id ? 'z-10' : 'z-0'}`}>
+                            {activeTabId === tab.id && 
+                                <BrowserFrame 
+                                    url={tab.url} 
+                                    noScript={settings.noScript} 
+                                    userAgent={settings.userAgent} 
+                                    onPageLoad={handlePageLoaded}
+                                    onFetchError={handleFetchError}
+                                    isDebugMode={isDebugMode}
+                                    localTestContent={localTestContent}
+                                />}
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
-}
+    );
+};
