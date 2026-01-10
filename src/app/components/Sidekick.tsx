@@ -5,11 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAIChat, Message } from './apps/useAIChat';
 import { Skeleton } from './ui/skeleton';
 import { PromptLibrary } from './PromptLibrary';
-import { useSmoothAnimation } from '../hooks/useSmoothAnimation';
 
 const MessageBubble = ({ msg }: { msg: Message }) => {
   const isUser = msg.sender === 'user';
-  const animationProps = useSmoothAnimation();
+
+  const fadeIn = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
 
   if (msg.isOptimistic) {
     return (
@@ -22,9 +26,9 @@ const MessageBubble = ({ msg }: { msg: Message }) => {
   return (
     <motion.div
       layout
-      {...animationProps}
+      {...fadeIn}
       className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
-      style={{ willChange: 'transform, opacity' }} // GPU Offloading
+      style={{ willChange: 'opacity' }} // Optimize for opacity changes
     >
       <div
         className="max-w-md px-4 py-3 rounded-lg border font-mono text-sm"
@@ -49,7 +53,6 @@ export function Sidekick({ isOpen, onToggle }: SidekickProps) {
   const { messages, isLoading, handleSend } = useAIChat();
   const [input, setInput] = useState('');
   const [activeTab, setActiveTab] = useState('chat');
-  const animationProps = useSmoothAnimation();
 
   const onSend = () => {
     handleSend(input);
@@ -67,6 +70,12 @@ export function Sidekick({ isOpen, onToggle }: SidekickProps) {
   const handleSelectPrompt = (prompt: string) => {
     setInput(prompt);
     setActiveTab('chat');
+  };
+  
+  const fadeIn = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
   };
 
   return (
@@ -89,7 +98,7 @@ export function Sidekick({ isOpen, onToggle }: SidekickProps) {
       
       <AnimatePresence mode="wait">
         {activeTab === 'chat' ? (
-          <motion.div {...animationProps} key="chat" className="flex-1 overflow-y-auto p-6 space-y-4">
+          <motion.div {...fadeIn} key="chat" className="flex-1 overflow-y-auto p-6 space-y-4">
             <AnimatePresence>
               {messages.map((msg) => (
                 <MessageBubble key={msg.id} msg={msg} />
@@ -97,7 +106,7 @@ export function Sidekick({ isOpen, onToggle }: SidekickProps) {
             </AnimatePresence>
           </motion.div>
         ) : (
-          <motion.div {...animationProps} key="library">
+          <motion.div {...fadeIn} key="library">
             <PromptLibrary onSelectPrompt={handleSelectPrompt} />
           </motion.div>
         )}
