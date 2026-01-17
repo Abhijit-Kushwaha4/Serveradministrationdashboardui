@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Sparkles } from 'lucide-react';
-import { runFluxSchnell } from '../../bytezClient'; // Using FLUX for image generation
+import { runFluxDev } from '../../bytezClient'; // Using FLUX for image generation
 
 export function ImageGenerator() {
   const [prompt, setPrompt] = useState('');
@@ -19,7 +19,7 @@ export function ImageGenerator() {
     try {
       // The model is expected to return an array of image URLs or base64 strings.
       // We will generate one image for this example.
-      const result = await runFluxSchnell(prompt);
+      const result = await runFluxDev(prompt);
 
       // Bytez.js might return a single URL or an array.
       const newImages = Array.isArray(result) ? result : [result];
@@ -39,7 +39,7 @@ export function ImageGenerator() {
       <div className="mb-6">
         <h2 className="text-xl mb-4 flex items-center gap-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
           <Sparkles className="w-5 h-5" style={{ color: 'var(--cyber-green)' }} />
-          AI Image Generator (FLUX.1-schnell)
+          AI Image Generator (FLUX.1-dev)
         </h2>
         
         <div className="flex gap-2">
