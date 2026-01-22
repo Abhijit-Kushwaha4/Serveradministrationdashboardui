@@ -1152,3 +1152,222 @@
 [info] Updating Studio Workspace active project to match Firebase CLI 'server-admin-dash-ui'
 [error] Failed to update Firebase Project for Studio Workspace because WORKSPACE_SLUG environment variable is empty
 [info] Now using project server-admin-dash-ui
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T17:00:07.576Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T17:00:07.576Z] > authorizing via signed-in user (gamingvninja@gmail.com)
+[debug] [2026-01-17T17:00:07.578Z] No OAuth tokens found
+[debug] [2026-01-17T17:00:07.579Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo [none]
+[debug] [2026-01-17T17:00:07.929Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo 200
+[debug] [2026-01-17T17:00:07.935Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo {"name":"projects/server-admin-dash-ui/billingInfo","projectId":"server-admin-dash-ui","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-17T17:00:07.955Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-17T17:00:07.956Z] > authorizing via signed-in user (gamingvninja@gmail.com)
+[debug] [2026-01-17T17:00:07.956Z] No OAuth tokens found
+[debug] [2026-01-17T17:00:07.956Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo [none]
+[debug] [2026-01-17T17:00:08.336Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo 200
+[debug] [2026-01-17T17:00:08.341Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo {"name":"projects/server-admin-dash-ui/billingInfo","projectId":"server-admin-dash-ui","billingAccountName":"","billingEnabled":false}
+[debug] [2026-01-17T17:00:08.345Z] No OAuth tokens found
+[debug] [2026-01-17T17:00:08.346Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/server-admin-dash-ui [none]
+[debug] [2026-01-17T17:00:09.154Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/server-admin-dash-ui 200
+[debug] [2026-01-17T17:00:09.155Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/server-admin-dash-ui {"projectNumber":"461353589094","projectId":"server-admin-dash-ui","lifecycleState":"ACTIVE","name":"Server Admin Dashboard","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-01-17T16:16:07.734044Z"}
+[debug] [2026-01-17T17:00:09.156Z] No OAuth tokens found
+[debug] [2026-01-17T17:00:09.157Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/server-admin-dash-ui [none]
+[debug] [2026-01-17T17:00:09.401Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/server-admin-dash-ui 200
+[debug] [2026-01-17T17:00:09.401Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/server-admin-dash-ui {"projectId":"server-admin-dash-ui","projectNumber":"461353589094","displayName":"Server Admin Dashboard","name":"projects/server-admin-dash-ui","resources":{"hostingSite":"server-admin-dash-ui"},"state":"ACTIVE","etag":"1_ef083673-ac6b-43f9-9b8f-4afb4110f891"}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-22T11:25:55.404Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-22T11:26:55.003Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-22T11:26:55.004Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-22T11:27:04.060Z] Running auto auth
+[debug] [2026-01-22T11:27:04.063Z] Running auto auth
+[debug] [2026-01-22T11:27:04.064Z] Running auto auth
+[debug] [2026-01-22T11:27:04.143Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.157Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo [none]
+[debug] [2026-01-22T11:27:04.235Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.236Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo [none]
+[debug] [2026-01-22T11:27:04.248Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.248Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo [none]
+[debug] [2026-01-22T11:27:04.756Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo 200
+[debug] [2026-01-22T11:27:04.757Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo {"name":"projects/server-admin-dash-ui/billingInfo","projectId":"server-admin-dash-ui","billingAccountName":"","billingEnabled":false}
+[debug] [2026-01-22T11:27:04.795Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.796Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.796Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.797Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.797Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.798Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.798Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.836Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.839Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:04.839Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com [none]
+[debug] [2026-01-22T11:27:04.839Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:04.844Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com [none]
+[debug] [2026-01-22T11:27:04.844Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:04.847Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-22T11:27:04.848Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:04.850Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-01-22T11:27:04.850Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:04.855Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com [none]
+[debug] [2026-01-22T11:27:04.855Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:04.858Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-22T11:27:04.858Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:04.859Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-01-22T11:27:04.860Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:04.861Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-01-22T11:27:04.861Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:04.866Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com [none]
+[debug] [2026-01-22T11:27:04.866Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.340Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo 200
+[debug] [2026-01-22T11:27:05.341Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo {"name":"projects/server-admin-dash-ui/billingInfo","projectId":"server-admin-dash-ui","billingAccountName":"","billingEnabled":false}
+[debug] [2026-01-22T11:27:05.342Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.342Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.348Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.349Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.349Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.349Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.350Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.400Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.400Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.401Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.401Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.409Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.409Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.417Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.423Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.428Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.428Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.430Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.430Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.435Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.435Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.441Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.441Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.454Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.454Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.459Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com [none]
+[debug] [2026-01-22T11:27:05.459Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.662Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo 200
+[debug] [2026-01-22T11:27:05.662Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo {"name":"projects/server-admin-dash-ui/billingInfo","projectId":"server-admin-dash-ui","billingAccountName":"","billingEnabled":false}
+[debug] [2026-01-22T11:27:05.663Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.663Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.665Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.665Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.667Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.667Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.667Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.686Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.686Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:05.686Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.686Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.694Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.694Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.696Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.696Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.699Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.699Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.702Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.702Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.704Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.705Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.707Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.707Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.711Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-01-22T11:27:05.711Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.712Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com [none]
+[debug] [2026-01-22T11:27:05.712Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com x-goog-quota-user=projects/server-admin-dash-ui
+[debug] [2026-01-22T11:27:05.945Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com 403
+[debug] [2026-01-22T11:27:05.945Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com [omitted]
+[debug] [2026-01-22T11:27:05.979Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com 200
+[debug] [2026-01-22T11:27:05.979Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:05.996Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com 200
+[debug] [2026-01-22T11:27:05.996Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.018Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com 200
+[debug] [2026-01-22T11:27:06.018Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.031Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com 200
+[debug] [2026-01-22T11:27:06.033Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.040Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-22T11:27:06.040Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.052Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-01-22T11:27:06.053Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.065Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-01-22T11:27:06.065Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.080Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-22T11:27:06.080Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-22T11:27:06.089Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-22T11:27:06.090Z] > authorizing via signed-in user (gamingvninja@gmail.com)
+[debug] [2026-01-22T11:27:06.091Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:06.091Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo [none]
+[debug] [2026-01-22T11:27:06.592Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com 200
+[debug] [2026-01-22T11:27:06.593Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.609Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com 403
+[debug] [2026-01-22T11:27:06.609Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com [omitted]
+[debug] [2026-01-22T11:27:06.641Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com 200
+[debug] [2026-01-22T11:27:06.642Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.678Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com 200
+[debug] [2026-01-22T11:27:06.678Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.699Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-01-22T11:27:06.699Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.723Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com 200
+[debug] [2026-01-22T11:27:06.723Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.728Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-22T11:27:06.728Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.729Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-01-22T11:27:06.730Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.731Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-22T11:27:06.731Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-22T11:27:06.741Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-22T11:27:06.741Z] > authorizing via signed-in user (gamingvninja@gmail.com)
+[debug] [2026-01-22T11:27:06.741Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:06.743Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo [none]
+[debug] [2026-01-22T11:27:06.781Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com 403
+[debug] [2026-01-22T11:27:06.781Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseio.com [omitted]
+[debug] [2026-01-22T11:27:06.797Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com 200
+[debug] [2026-01-22T11:27:06.797Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firestore.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.834Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com 200
+[debug] [2026-01-22T11:27:06.839Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/fcm.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.856Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-22T11:27:06.857Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.858Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com 200
+[debug] [2026-01-22T11:27:06.858Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.882Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2026-01-22T11:27:06.882Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.900Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-01-22T11:27:06.900Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.901Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-22T11:27:06.901Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-01-22T11:27:06.905Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com 200
+[debug] [2026-01-22T11:27:06.906Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/server-admin-dash-ui/services/storage.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-22T11:27:06.926Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-22T11:27:06.926Z] > authorizing via signed-in user (gamingvninja@gmail.com)
+[debug] [2026-01-22T11:27:06.926Z] No OAuth tokens found
+[debug] [2026-01-22T11:27:06.926Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo [none]
+[debug] [2026-01-22T11:27:06.968Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo 200
+[debug] [2026-01-22T11:27:06.978Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo {"name":"projects/server-admin-dash-ui/billingInfo","projectId":"server-admin-dash-ui","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-22T11:27:06.988Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-22T11:27:06.988Z] > authorizing via signed-in user (gamingvninja@gmail.com)
+[debug] [2026-01-22T11:27:07.166Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo 200
+[debug] [2026-01-22T11:27:07.172Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo {"name":"projects/server-admin-dash-ui/billingInfo","projectId":"server-admin-dash-ui","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-22T11:27:07.186Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-22T11:27:07.186Z] > authorizing via signed-in user (gamingvninja@gmail.com)
+[debug] [2026-01-22T11:27:07.212Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo 200
+[debug] [2026-01-22T11:27:07.212Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/server-admin-dash-ui/billingInfo {"name":"projects/server-admin-dash-ui/billingInfo","projectId":"server-admin-dash-ui","billingAccountName":"","billingEnabled":false}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-22T11:27:07.214Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-22T11:27:07.216Z] > authorizing via signed-in user (gamingvninja@gmail.com)

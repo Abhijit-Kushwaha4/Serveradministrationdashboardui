@@ -12,3 +12,30 @@ export async function runFluxDev(prompt: string) {
     }
     return output;
 }
+
+export async function runClaudeOpus4_5(prompt: string) {
+    const model = sdk.model("anthropic/claude-3-opus");
+    const { error, output } = await model.run(prompt);
+    if (error) {
+        throw new Error(error);
+    }
+    return output;
+}
+
+export async function runDeepseekOCR(prompt: string) {
+    const model = sdk.model("deepseek/deepseek-ocr");
+    const { error, output } = await model.run(prompt);
+    if (error) {
+        throw new Error(error);
+    }
+    return output;
+}
+
+export async function runSora2Pro(prompt: string) {
+    const model = sdk.model("sora/sora-2-pro");
+    const { error, output } = await model.run(prompt);
+    if (error) {
+        throw new Error(error);
+    }
+    return output;
+}
