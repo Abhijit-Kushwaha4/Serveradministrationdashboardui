@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Code2 } from 'lucide-react';
-import { runClaudeOpus4_5 } from '../../bytezClient'; // Using Claude for code generation
+import { runQwenCoder } from '../../bytezClient-qwen3-coder'; // Using Qwen Coder for code generation
 
 export function CodeGenerator() {
   const [description, setDescription] = useState('');
@@ -18,9 +18,9 @@ export function CodeGenerator() {
 
     try {
       const prompt = `Generate a code snippet based on the following description: ${description}`;
-      const code = await runClaudeOpus4_5(prompt);
+      const code = await runQwenCoder(prompt);
       
-      // Claude might return the code in a markdown block, let's try to extract it.
+      // Qwen Coder might return the code in a markdown block, let's try to extract it.
       const codeBlockRegex = /```(?:[a-zA-Z]+)?\n([\s\S]*?)```/;
       const match = code.match(codeBlockRegex);
       const extractedCode = match ? match[1] : code;

@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Sparkles } from 'lucide-react';
-import { runFluxDev } from '../../bytezClient'; // Using FLUX for image generation
+import { runFluxDev } from '../../bytezClient-flux'; // Using FLUX for image generation
 
 export function ImageGenerator() {
   const [prompt, setPrompt] = useState('');

@@ -10,12 +10,21 @@ const sdk = new Bytez(key)
 // choose Qwen3-Coder-30B-A3B-Instruct
 const model = sdk.model("Qwen/Qwen3-Coder-30B-A3B-Instruct")
 
-// send input to model
-const { error, output } = await model.run([
-  {
-    "role": "user",
-    "content": "Hello"
-  }
-])
+export async function runQwenCoder(prompt: string) {
+    const { error, output } = await model.run([
+        {
+            "role": "user",
+            "content": prompt
+        }
+    ]);
 
-console.log({ error, output });
+    if (error) {
+        throw new Error(error.message);
+    }
+    
+    if (output && output.length > 0 && output[0].content) {
+        return output[0].content;
+    }
+
+    return "";
+}
