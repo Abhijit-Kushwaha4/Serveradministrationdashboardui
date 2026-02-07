@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Sparkles, Zap, Cpu, Layers, Box, Globe, Database } from 'lucide-react';
 
 export function GridBackground() {

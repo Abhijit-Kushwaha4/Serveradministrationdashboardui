@@ -1,18 +1,40 @@
 
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
+const https = require('https');
 
-const adBlockList = [
-  'doubleclick.net',
-  'google-analytics.com',
-  'googletagmanager.com',
-  'googlesyndication.com',
-  'adservice.google.com',
-  'connect.facebook.net',
-  'platform.twitter.com',
-  'scorecardresearch.com',
-  'cr-input.mxpnl.com',
-];
+// URL for the EasyList ad-blocking filter.
+const easylistUrl = 'https://easylist.to/easylist/easylist.txt';
+
+// Fetch and parse the EasyList.
+const getAdBlockList = () => {
+  return new Promise((resolve, reject) => {
+    https.get(easylistUrl, (res) => {
+      let data = '';
+      res.on('data', (chunk) => data += chunk);
+      res.on('end', () => {
+        const blocklist = data.split('\n')
+          .filter(line => line.startsWith('||') && !line.startsWith('||*'))
+          .map(line => line.slice(2).replace(/\^$/, ''));
+        resolve(blocklist);
+      });
+    }).on('error', (err) => {
+      console.error('Failed to download EasyList:', err);
+      // Fallback to a basic list if the download fails.
+      resolve([
+        'doubleclick.net',
+        'google-analytics.com',
+        'googletagmanager.com',
+        'googlesyndication.com',
+        'adservice.google.com',
+        'connect.facebook.net',
+        'platform.twitter.com',
+        'scorecardresearch.com',
+        'cr-input.mxpnl.com',
+      ]);
+    });
+  });
+};
 
 const userAgents = {
   desktop: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
@@ -38,6 +60,7 @@ export default async function handler(req, res) {
   let browser = null;
 
   try {
+    const adBlockList = await getAdBlockList();
     browser = await puppeteer.launch({
       args: chrome.args,
       executablePath: await chrome.executablePath,
@@ -83,12 +106,10 @@ export default async function handler(req, res) {
       html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
     }
 
-    // --- DIAGNOSTIC FIX ---
-    // 3. Aggressively strip security headers that prevent iframe rendering.
+    // Remove headers that prevent iframe rendering.
     res.removeHeader('X-Frame-Options');
     res.removeHeader('Content-Security-Policy');
     res.removeHeader('X-Content-Type-Options');
-    // --- END FIX ---
 
     res.status(200).json({
       html,
@@ -98,15 +119,15 @@ export default async function handler(req, res) {
       status: status
     });
 
-  } catch (error) {
-    console.error('[BROWSER_PROXY_ERROR]', error);
+  } catch (error) { 
+    console.error('[BROWSER_PROXY_ERROR]', error); 
     res.status(500).json({ 
-        error: 'Proxy failed to load the page.',
+        error: 'Proxy failed to load the page.', 
         message: error.message 
-    });
-  } finally {
-    if (browser) {
-      await browser.close();
-    }
-  }
+    }); 
+  } finally { 
+    if (browser) { 
+      await browser.close(); 
+    } 
+  } 
 }
