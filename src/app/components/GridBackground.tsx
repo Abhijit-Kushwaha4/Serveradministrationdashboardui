@@ -270,7 +270,6 @@ export function GridBackground() {
               backgroundSize: '200% 100%',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
             }}
           >
             Welcome to H&K Workspace

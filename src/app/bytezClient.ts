@@ -37,3 +37,27 @@ export async function getVideoStatus(jobId: string): Promise<{ videoUrl?: string
     return {};
   }
 }
+
+export async function runDeepseekOCR(imageUrl: string): Promise<string> {
+    console.log(`Running OCR on image: ${imageUrl}`);
+    try {
+        const result = await sdk.run({
+            model: 'deepseek/ocr',
+            messages: [{
+                role: 'user',
+                content: `[Image]
+${imageUrl}
+[/Image]`
+            }]
+        });
+
+        if (result && result.choices && result.choices.length > 0) {
+            return result.choices[0].message.content;
+        } else {
+            throw new Error("Invalid response from OCR API");
+        }
+    } catch (error) {
+        console.error("Error running Deepseek OCR:", error);
+        throw error;
+    }
+}
