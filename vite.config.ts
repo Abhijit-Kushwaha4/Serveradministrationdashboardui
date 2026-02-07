@@ -16,4 +16,18 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      // Define Node.js globals for dependencies that need them
+      define: {
+        global: 'globalThis',
+      },
+    },
+    exclude: ['bytez.js'],
+  },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+  },
 })
