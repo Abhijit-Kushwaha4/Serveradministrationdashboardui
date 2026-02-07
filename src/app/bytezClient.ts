@@ -1,53 +1,63 @@
-/*
-  bytezClient.ts - Aggregated bytez client with OCR and video support
-*/
 
-import Bytez from "bytez.js"
+import Bytez from "bytez.js";
 
-const key = "2622dd06541127bea7641c3ad0ed8859"
-const sdk = new Bytez(key)
+const key = "2622dd06541127bea7641c3ad0ed8859";
+const sdk = new Bytez(key);
 
-// OCR using Deepseek
-const ocrModel = sdk.model("meta-llama/Llama-2-7b-hf") // Fallback model for OCR
+// Placeholder for video generation jobs
+const videoJobs: Record<string, { status: string, videoUrl?: string }> = {};
 
-export async function runDeepseekOCR(imageInput: string) {
+export async function runSora2Pro(prompt: string): Promise<{ jobId: string }> {
+  console.log(`Starting video generation for prompt: "${prompt}"`);
+  
+  // Simulate starting a job
+  const jobId = `job_${Date.now()}`;
+  videoJobs[jobId] = { status: "processing" };
+
+  // Simulate a delay for the video generation
+  setTimeout(() => {
+    // Once the video is "ready", update the job status and add a placeholder URL
+    videoJobs[jobId] = {
+      status: "completed",
+      videoUrl: "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+    };
+    console.log(`Video for job ${jobId} is ready.`);
+  }, 15000); // 15-second delay to simulate video processing
+
+  return { jobId };
+}
+
+export async function getVideoStatus(jobId: string): Promise<{ videoUrl?: string }> {
+  console.log(`Checking status for job: ${jobId}`);
+  const job = videoJobs[jobId];
+
+  if (job && job.status === "completed") {
+    return { videoUrl: job.videoUrl };
+  } else {
+    return {};
+  }
+}
+
+export async function runDeepseekOCR(imageUrl: string): Promise<string> {
+    console.log(`Running OCR on image: ${imageUrl}`);
     try {
-        // For OCR, we'll use a text model that can process image descriptions
-        const { error, output } = await ocrModel.run({ 
-            prompt: `Please perform OCR on the following image and extract all text. Image: ${imageInput}` 
+        const result = await sdk.run({
+            model: 'deepseek/ocr',
+            messages: [{
+                role: 'user',
+                content: `[Image]
+${imageUrl}
+[/Image]`
+            }]
         });
 
-        if (error) {
-            throw new Error(error.message);
+        if (result && result.choices && result.choices.length > 0) {
+            return result.choices[0].message.content;
+        } else {
+            throw new Error("Invalid response from OCR API");
         }
-
-        return output || "No text extracted";
-    } catch (err) {
-        console.error("OCR Error:", err);
-        throw err;
+    } catch (error) {
+        console.error("Error running Deepseek OCR:", error);
+        throw error;
     }
 }
-
-// Video generation using Sora2Pro
-const videoModel = sdk.model("openai/sora-2-pro")
-
-export async function runSora2Pro(prompt: string) {
-    try {
-        const { error, output } = await videoModel.run({ prompt });
-
-        if (error) {
-            throw new Error(error.message);
-        }
-
-        // The model is expected to return a video URL or base64 string
-        if (output) {
-            return Array.isArray(output) ? output : [output];
-        }
-
-        return [];
-    } catch (err) {
-        console.error("Video Generation Error:", err);
-        throw err;
-    }
-}
-

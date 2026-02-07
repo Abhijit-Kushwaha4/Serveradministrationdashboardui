@@ -98,27 +98,27 @@ export default function App() {
           <TopBar onToolClick={handleToolClick} />
           <div className="flex-1 rounded-tl-2xl border-l border-t border-cyber-border bg-cyber-dark-surface shadow-inset-green overflow-hidden flex flex-col">
             <div className="flex-1 relative overflow-hidden">
-              <AnimatePresence>
-                {openWindows.map(appId => {
-                  const app = appRegistry.find(app => app.id === appId);
-                  if (!app) return null;
-                  return (
-                    <WindowComponent
-                      key={appId}
-                      title={app.name}
-                      isOpen={!minimizedWindows.includes(appId)}
-                      onClose={() => handleWindowClose(appId)}
-                      onMinimize={() => handleWindowMinimize(appId)}
-                      layoutId={`window-${appId}`}
-                    >
-                      <Suspense fallback={<div>Loading...</div>}>
-                        {renderApp(appId)}
-                      </Suspense>
-                    </WindowComponent>
-                  );
-                })}
-              </AnimatePresence>
-              {openWindows.length === 0 && <GridBackground />}
+                <GridBackground />
+                <AnimatePresence>
+                    {openWindows.map(appId => {
+                    const app = appRegistry.find(app => app.id === appId);
+                    if (!app) return null;
+                    return (
+                        <WindowComponent
+                        key={appId}
+                        title={app.name}
+                        isOpen={!minimizedWindows.includes(appId)}
+                        onClose={() => handleWindowClose(appId)}
+                        onMinimize={() => handleWindowMinimize(appId)}
+                        layoutId={`window-${appId}`}
+                        >
+                        <Suspense fallback={<div>Loading...</div>}>
+                            {renderApp(appId)}
+                        </Suspense>
+                        </WindowComponent>
+                    );
+                    })}
+                </AnimatePresence>
             </div>
             <div className="h-16 bg-cyber-surface border-t border-cyber-border flex items-center px-4 space-x-2">
               {minimizedWindows.map(appId => (
